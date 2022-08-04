@@ -40,8 +40,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(puerto, () => {
-  console.log(`App corriendo en puerto ${puerto}`);
-})
-
 module.exports = app;
