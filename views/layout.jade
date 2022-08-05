@@ -1,22 +1,58 @@
 doctype html
-html
+html(lang="en")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css")
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-  body(class="")
+    meta(name="viewport", content="width=device-width, initial-scale=1  ")
+  body(class="", style="background: linear-gradient(0deg,#a9def9,#4895ef)")
 
-    header(class="")
-      nav(class="")
-        ul(class="")
-          li(class="")
-            a(class="" ,href="users") Usuarios
-          li(class="")
-            a(class="", href="login") Login
+    div(class="container py-3")
+      header(class="")
+        div(class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom")
+          span(class="fs-4") AvionesVip
+          a(href="/", class="d-flex align-items-center text-dark text-decoration-none")
+            img(src="images/aviones-vip.png", alt="logo", class="img-fluid")
+          nav(class="d-inline-flex mt-2 mt-md-0 ms-md-auto")
+            a(href="#", class="me-3 py-2 text-dark text-decoration-none") About 
+            a(href="#", class="me-3 py-2 text-dark text-decoration-none") Contact
+            a(href="#", class="me-3 py-2 text-dark text-decoration-none") Schedule   
+            a(href="login", class="me-3 py-2 text-dark text-decoration-none") Pricing   
+          a(href="sign-in", class="btn btn-outline-primary mb-3") Sign up
+          a(href="sign-in", class="btn btn-outline-secondary") Login
 
-    block content
-    
-    footer(class="")
-      div(class="mb-3")
-        h1(class="") Este es mi footer de pujoltinki, muchas gracias, solo en cines ojo, cualquier copia no autorizada de Pujoltinki la película (2022) ® será penalizada según la ley vigente en el país de procedencia de la comisión de infracción y se regirá por sus leyes y estatutos del código penal en pos de mantener la integridad de Pujoltinki la película (2022) ® sólo en cines.
+      block content
+
+      footer(class="pt-4 my-md-5 pt-md-5 border-top")
+        div(class="row")
+          div(class="col-12 col-md")
+            img(src="images/aviones-vip.png", alt="logo", class="img-fluid")
+            small(class="d-block mb-3 text-muted")® 2022.
+          div(class="col-6 col-md")
+            h5(class="") About Us
+            ul(class="list-unstyled text-small")
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Team behind
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none")  Our mission
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Privacy Policy 
+          div(class="col-6 col-md")
+            h5(class="") Contact Us
+            ul(class="list-unstyled text-small")
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Our contact
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Placeholder
+          div(class="col-6 col-md")
+            h5(class="") Flights
+            ul(class="list-unstyled text-small")
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Schedule your flight
+              li(class="mb-1")
+                a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Compare plans
+
+
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
+ 
+        
