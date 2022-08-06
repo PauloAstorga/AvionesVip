@@ -1,0 +1,33 @@
+extends layout 
+ 
+block content
+ div(class="container")
+    form(class="form")
+
+        div(class="mb-3")
+            label(class="form-label" for="inputUsername") Email
+            input(id="inputUsername", name="inputUsername", type="text", class="form-control" placeholder="Email@example.com")
+
+        div(class="mb-3")
+            label(class="form-label" for="inputName") Name
+            input(id="inputName", name="inputName", type="text", class="form-control" placeholder="Your name")
+
+        div(class="mb-3")
+            label(class="form-label" for="inputSurname") Surname
+            input(id="inputSurname", name="inputSurname", type="text", class="form-control" placeholder="Your surname")
+
+        div(class="mb-3")
+            label(class="form-label" for="inputPhone") Phone
+            input(id="inputPhone", name="inputPhone", type="tel", class="form-control" placeholder="Phone format 9-XXXXXXXX" pattern="[9]{1}-[0-9]{8}")
+
+        div(class="mb-3")
+            label(class="form-label" for="inputPassword") Password
+            input(id="inputPassword", name="inputPassword", type="password", class="form-control" placeholder="Password")
+        
+        div(class="mb-3")
+            label(class="form-label" for="inputPassword2") Re-Type Password
+            input(id="inputPassword2", name="inputPassword2", type="password", class="form-control" placeholder="Re-type password")
+        div(id="passwordHelpBlock" class="form-text") Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+
+        div(class="col-mb-3 text-center")
+            input(id="inputSend", name="inputSend", type="submit", value="Sign-up" class="btn btn-primary")    
