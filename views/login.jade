@@ -1,10 +1,8 @@
 extends layout 
 
-block header
-
 block content
   div(class="container")
-    form(class="form")
+    form(class="form", method="POST", action="")
 
         div(class="mb-3")
             label(class="form-label" for="inputUsername") Email
@@ -19,6 +17,63 @@ block content
             input(type="checkbox", class="form-check-input", )
             label(class="", for="") Remember me
 
-        input(id="inputSend", name="inputSend", type="submit", value="Login" class="btn btn-primary")    
+        input(id="inputSend", name="inputSend", onclick="validar()", value="Login" class="btn btn-primary")   
 
-block footer
+    script.
+        function validar() {
+
+            var username = document.getElementById("inputUsername").value;
+            var password = document.getElementById("inputPassword").value;
+
+            var resp;
+
+            fetch('login', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify( {inputUsername : username, inputPassword : password} )
+            })
+            .then(response => response.json())
+            .then(data => data.login?mostrarLogin():mostrarLoginIncorrecto() )
+            .catch(err => console.log("Err is: "+err));
+
+        }
+
+        function mostrarLogin() {
+            const Toast = Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            icon: 'success',
+            title: 'Signed in successfully'
+            })
+            .then(
+                function() {
+                    window.location.href = "/"
+                }
+            )
+
+        }
+
+        function mostrarLoginIncorrecto() {
+            const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+            })
+
+            Toast.fire({
+            icon: 'error',
+            title: 'Incorrect credentials'
+            })
+        }
