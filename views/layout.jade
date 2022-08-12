@@ -18,8 +18,14 @@ html(lang="en")
             a(href="about", class="me-2 py-1 text-dark text-decoration-none") About 
             a(href="#", class="me-2 py-1 text-dark text-decoration-none") Contact 
             a(href="login", class="me-2 py-1 text-dark text-decoration-none") Pricing
-            a(href="sign-up", class="me-2 py-1 btn btn-outline-primary btn-sm") Sign up
-            a(href="login", class="me-2 py-1 btn btn-outline-secondary btn-sm") Login   
+            - if (typeof(session.loggedUser) == 'undefined') {
+              a(href="sign-up", id="sign-up", class="me-2 py-1 btn btn-outline-primary btn-sm") Sign up
+              a(href="login", id="login", class="me-2 py-1 btn btn-outline-secondary btn-sm") Login
+            - } else {
+              a(href="my-account", id="my-account", class="me-2 py-1 btn btn-outline-primary btn-sm") My Account
+              button(id="logout", class="me-2 py-1 btn btn-outline-secondary btn-sm", onclick="logout()") Log out  
+            - }
+            
 
       block content
 
@@ -53,6 +59,41 @@ html(lang="en")
                 a(href="contacto#desarrolladores", class="link-secondary text-decoration-none") Compare plans
 
 
+    script.
+        function logout() {
+            var resp;
+
+            fetch('logout', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify( {logout : true } )
+            })
+            .then(response => response.json())
+            .then(data => data.logout?mostrarLogout():mostrarLogout() )
+            .catch(err => console.log("Err is: "+err));
+
+        }
+    script. 
+     function changeLogout() {
+        var bt1 = document.getElementById("my-account");
+        var bt2 = document.getElementById("logout");
+        
+        var login = document.createElement("a");
+        login.className = bt2.className;
+        login.href = "login";
+        login.textContent = "Login";
+
+        bt1.textContent = "Sign up";
+        bt1.href = "sign-up";
+
+        bt2.parentNode.replaceChild(login, bt2);
+
+     }
+    
+    script(src="/javascripts/logout.js")
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin="anonymous")
     script(src="//cdn.jsdelivr.net/npm/sweetalert2@11") 
         
