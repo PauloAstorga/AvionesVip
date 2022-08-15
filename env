@@ -1,5 +1,0 @@
-# .env
-PORT = 3040
-
-# MONGO
-MONGO_URL = mongodb://localhost:27017/aviones-qa
